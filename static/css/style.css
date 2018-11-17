@@ -1,0 +1,87 @@
+/* #map-container, body, html {
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
+
+#map {
+  height: 600px;
+} */
+
+/* #map,
+body,
+html {
+  height: 100%;
+} */
+
+.map {
+  width: 960px;
+  height: 600px;
+}
+
+.svg-container {
+  background-color: "grey";
+}
+
+.col-lg-12 ul li{
+  padding-bottom: 30px;
+}
+
+/* CSS to make Reveal and leaflet work play nice together */
+.reveal .leaflet-container .leaflet-fade-anim .leaflet-tile, .reveal .leaflet-container .leaflet-fade-anim .leaflet-popup {
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.reveal .leaflet-container {
+  font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.reveal .leaflet-container img {
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  max-height: inherit;
+}
+
+.reveal .leaflet-container .leaflet-popup-tip-container {
+  margin: 0 auto;
+}
+
+.reveal .leaflet-container .leaflet-popup-content-wrapper {
+  padding: 1px;
+  margin: inherit;
+}
+
+.reveal .leaflet-container .leaflet-popup-content {
+  margin: 13px 19px;
+  line-height: 1.4;
+}
+
+.reveal .leaflet-container .leaflet-popup-content h3 {
+  color: #333;
+}
+
+.reveal .leaflet-container .leaflet-popup-tip {
+  padding: 1px;
+  margin: -10px auto 0;
+}
+
+.reveal .leaflet-container .leaflet-popup-content, .reveal .leaflet-popup-content h2 {
+  color: #333;
+}
+
+.reveal .leaflet-container .leaflet-popup-content pre {
+  font-size: 14px;
+  width: 100%;
+  box-shadow: none;
+}
+
+.leaflet-popup-content {
+  text-align: center;
+}
