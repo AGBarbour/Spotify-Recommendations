@@ -9,9 +9,6 @@ from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
-
-
-
 app = Flask(__name__)
 
 
@@ -39,6 +36,7 @@ class Features(db.Model):
     def __repr__(self):
         return '<Features %r>' % (self.name)
 
+
 class Map(db.Model):
     __tablename__ = 'map'
 
@@ -47,6 +45,7 @@ class Map(db.Model):
 
     def __repr__(self):
         return '<Map %r>' % (self.name)
+
 
 class Genre(db.Model):
     __tablename__ = 'genre'
@@ -64,11 +63,13 @@ def index():
     return render_template("index.html")
     # return "hi"
 
+
 @app.route("/features")
 def features():
     """Return all features"""
 
-    results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy, Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
+    results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy,
+                               Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
 
     song_id = [result[0] for result in results]
     popularity = [result[1] for result in results]
@@ -78,7 +79,6 @@ def features():
     speechiness = [result[5] for result in results]
     duration_ms = [result[6] for result in results]
     tempo = [result[7] for result in results]
-    
 
     # Format the data to send as json
     data = [{
@@ -91,18 +91,18 @@ def features():
         "duration_ms": duration_ms,
         "tempo": tempo
     }]
+    # check return for html ID
     return jsonify(data)
+
 
 @app.route("/map")
 def map():
     """Return Map data"""
 
-   
     results = db.session.query(Map.country_code, Map.market_count).all()
 
     country_code = [result[0] for result in results]
     market_count = [result[1] for result in results]
-    
 
     # Format the data to send as json
     data = [{
@@ -110,6 +110,7 @@ def map():
         "market_count": market_count,
     }]
     return jsonify(data)
+
 
 @app.route("/genre")
 def genre():
@@ -119,7 +120,6 @@ def genre():
 
     genre = [result[0] for result in results]
     count = [result[1] for result in results]
-    
 
     # Format the data to send as json
     data = []
@@ -133,8 +133,6 @@ def genre():
         data.append(temp)
 
     return jsonify(data)
-
-
 
 
 if __name__ == "__main__":
