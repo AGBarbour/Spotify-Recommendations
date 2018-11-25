@@ -1,11 +1,12 @@
 import os
 
 import sqlalchemy
+import requests
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -37,24 +38,26 @@ class Features(db.Model):
         return '<Features %r>' % (self.name)
 
 
-class Map(db.Model):
-    __tablename__ = 'map'
+# TODO
+# I think this can be deleted
+# class Map(db.Model):
+#     __tablename__ = 'map'
 
-    country_code = db.Column(db.String(64), primary_key=True)
-    market_count = db.Column(db.Float)
+#     country_code = db.Column(db.String(64), primary_key=True)
+#     market_count = db.Column(db.Float)
 
-    def __repr__(self):
-        return '<Map %r>' % (self.name)
+#     def __repr__(self):
+#         return '<Map %r>' % (self.name)
 
 
-class Genre(db.Model):
-    __tablename__ = 'genre'
+# class Genre(db.Model):
+#     __tablename__ = 'genre'
 
-    genre = db.Column(db.String(64), primary_key=True)
-    count = db.Column(db.Float)
+#     genre = db.Column(db.String(64), primary_key=True)
+#     count = db.Column(db.Float)
 
-    def __repr__(self):
-        return '<Genre %r>' % (self.name)
+#     def __repr__(self):
+#         return '<Genre %r>' % (self.name)
 
 
 @app.route("/")
@@ -64,17 +67,18 @@ def index():
     # return "hi"
 
 
-@app.route("/predict")
-def predict(song):
+@app.route("/predict", methods=['POST'])
+def predict():
 
+    song = request.form['songname']
     # Fetch song features via API call
 
     # Load trained model
 
-    # User song features to make a model.predict
+    # Use song features to make a model.predict
     # What kind of database setup is required?
 
-    #
+    # Make second api call to retrieve name/album/artist from predicted songs
 
     # data = list of top 5 songs
 
