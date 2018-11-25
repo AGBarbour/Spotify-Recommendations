@@ -54,9 +54,9 @@ body {
 }
 
 /* Adding styles to the aside and filter form */
-.ufo-form {
+/* .ufo-form {
   margin-top: 50px;
-}
+} */
 
 .filters .panel-body {
   padding: 0;
@@ -75,7 +75,7 @@ select {
 }
 
 #table-area th {
-  text-align: center;
+  text-align: left;
 }
 
 #table-area th:first-child,
