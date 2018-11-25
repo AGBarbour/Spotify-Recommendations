@@ -64,75 +64,86 @@ def index():
     # return "hi"
 
 
-@app.route("/features")
-def features():
-    """Return all features"""
+@app.route("/predict")
+def predict(song):
 
-    results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy,
-                               Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
+    # Fetch song features via API call
 
-    song_id = [result[0] for result in results]
-    popularity = [result[1] for result in results]
-    danceability = [result[2] for result in results]
-    energy = [result[3] for result in results]
-    loudness = [result[4] for result in results]
-    speechiness = [result[5] for result in results]
-    duration_ms = [result[6] for result in results]
-    tempo = [result[7] for result in results]
+    # Load trained model
 
-    # Format the data to send as json
-    data = [{
-        "song_id": song_id,
-        "popularity": popularity,
-        "danceability": danceability,
-        "energy": energy,
-        "loudness": loudness,
-        "speechiness": speechiness,
-        "duration_ms": duration_ms,
-        "tempo": tempo
-    }]
+    # User song features to make a model.predict
+    # What kind of database setup is required?
+
+    # data = list of top 5 songs
+
+    # """Return all features"""
+
+    # results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy,
+    #                            Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
+
+    # song_id = [result[0] for result in results]
+    # popularity = [result[1] for result in results]
+    # danceability = [result[2] for result in results]
+    # energy = [result[3] for result in results]
+    # loudness = [result[4] for result in results]
+    # speechiness = [result[5] for result in results]
+    # duration_ms = [result[6] for result in results]
+    # tempo = [result[7] for result in results]
+
+    # # Format the data to send as json
+    # data = [{
+    #     "song_id": song_id,
+    #     "popularity": popularity,
+    #     "danceability": danceability,
+    #     "energy": energy,
+    #     "loudness": loudness,
+    #     "speechiness": speechiness,
+    #     "duration_ms": duration_ms,
+    #     "tempo": tempo
+    # }]
     # check return for html ID
     return jsonify(data)
 
+# I don't think we need any of this
 
-@app.route("/map")
-def map():
-    """Return Map data"""
+# @app.route("/map")
+# def map():
+#     """Return Map data"""
 
-    results = db.session.query(Map.country_code, Map.market_count).all()
+#     results = db.session.query(Map.country_code, Map.market_count).all()
 
-    country_code = [result[0] for result in results]
-    market_count = [result[1] for result in results]
+#     country_code = [result[0] for result in results]
+#     market_count = [result[1] for result in results]
 
-    # Format the data to send as json
-    data = [{
-        "country_code": country_code,
-        "market_count": market_count,
-    }]
-    return jsonify(data)
+#     # Format the data to send as json
+#     data = [{
+#         "country_code": country_code,
+#         "market_count": market_count,
+#     }]
+#     return jsonify(data)
 
 
-@app.route("/genre")
-def genre():
-    """Return Genre data"""
+# @app.route("/genre")
+# def genre():
+#     """Return Genre data"""
 
-    results = db.session.query(Genre.genre, Genre.count).all()
+#     results = db.session.query(Genre.genre, Genre.count).all()
 
-    genre = [result[0] for result in results]
-    count = [result[1] for result in results]
+#     genre = [result[0] for result in results]
+#     count = [result[1] for result in results]
 
-    # Format the data to send as json
-    data = []
+#     # Format the data to send as json
+#     data = []
 
-    for result in results:
+#     for result in results:
 
-        temp = {
-            "genre": result[0],
-            "count": result[1]
-        }
-        data.append(temp)
+#         temp = {
+#             "genre": result[0],
+#             "count": result[1]
+#         }
+#         data.append(temp)
 
-    return jsonify(data)
+#     return jsonify(data)
 
 
 if __name__ == "__main__":
