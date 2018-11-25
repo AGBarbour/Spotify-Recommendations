@@ -104,47 +104,6 @@ def predict(song):
     # check return for html ID
     return jsonify(data)
 
-# I don't think we need any of this
-
-# @app.route("/map")
-# def map():
-#     """Return Map data"""
-
-#     results = db.session.query(Map.country_code, Map.market_count).all()
-
-#     country_code = [result[0] for result in results]
-#     market_count = [result[1] for result in results]
-
-#     # Format the data to send as json
-#     data = [{
-#         "country_code": country_code,
-#         "market_count": market_count,
-#     }]
-#     return jsonify(data)
-
-
-# @app.route("/genre")
-# def genre():
-#     """Return Genre data"""
-
-#     results = db.session.query(Genre.genre, Genre.count).all()
-
-#     genre = [result[0] for result in results]
-#     count = [result[1] for result in results]
-
-#     # Format the data to send as json
-#     data = []
-
-#     for result in results:
-
-#         temp = {
-#             "genre": result[0],
-#             "count": result[1]
-#         }
-#         data.append(temp)
-
-#     return jsonify(data)
-
 
 if __name__ == "__main__":
     app.run()
