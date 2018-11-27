@@ -32,12 +32,12 @@
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
-                <form>
+                <form method="post">
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
                         <label for="song">Enter Song</label>
-                        <input class="form-control" id="songname" type="text" placeholder="Push It">
+                        <input class="form-control" id="songname" type="text" name="songname" placeholder="Push It">
                       </li>
                     </ul>
                   </div>
@@ -57,19 +57,19 @@
                   <th class="table-head">Album</th>
                 </tr>
               </thead>
-              <tbody id= "tbody1"></tbody>
+              <tbody id="tbody1"></tbody>
               <br>
               <br>
             </table>
-              <table id="result-table" class="table table-striped">
-                <thead>
-                  <tr>Top 3 Suggested Songs
-                    <th class="table-head">Song Title</th>
-                    <th class="table-head">Artist</th>
-                    <th class="table-head">Album</th>
-                  </tr>
-                </thead>
-              <tbody id= "tbody2"></tbody>
+            <table id="result-table" class="table table-striped">
+              <thead>
+                <tr>Top 3 Suggested Songs
+                  <th class="table-head">Song Title</th>
+                  <th class="table-head">Artist</th>
+                  <th class="table-head">Album</th>
+                </tr>
+              </thead>
+              <tbody id="tbody2"></tbody>
             </table>
           </div>
         </div>
