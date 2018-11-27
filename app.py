@@ -1,13 +1,15 @@
 import os
 
-import sqlalchemy
+# import sqlalchemy
 import requests
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+# from sqlalchemy.ext.automap import automap_base
+# from sqlalchemy.orm import Session
+# from sqlalchemy import create_engine
 
 from flask import Flask, jsonify, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
+
+from func import search, features_call, recommendation
 
 
 app = Flask(__name__)
@@ -17,62 +19,73 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///music.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///music.db"
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 
 
-class Features(db.Model):
-    __tablename__ = 'features'
+# class Features(db.Model):
+#     __tablename__ = 'features'
 
-    id = db.Column(db.String(64), primary_key=True)
-    popularity = db.Column(db.Float)
-    danceability = db.Column(db.Float)
-    energy = db.Column(db.Float)
-    loudness = db.Column(db.Float)
-    speechiness = db.Column(db.Float)
-    duration_ms = db.Column(db.Float)
-    tempo = db.Column(db.Float)
+#     id = db.Column(db.String(64), primary_key=True)
+#     popularity = db.Column(db.Float)
+#     danceability = db.Column(db.Float)
+#     energy = db.Column(db.Float)
+#     loudness = db.Column(db.Float)
+#     speechiness = db.Column(db.Float)
+#     duration_ms = db.Column(db.Float)
+#     tempo = db.Column(db.Float)
 
-    def __repr__(self):
-        return '<Features %r>' % (self.name)
+#     def __repr__(self):
+#         return '<Features %r>' % (self.name)
 
 
 @app.route("/")
 def index():
     """Return the homepage."""
     return render_template("recommend.html")
-    # return "hi"
 
 
-@app.route("/predict", methods=['POST'])
-def predict():
+@app.route("/search", methods=['POST'])
+def searchRoute():
+    song = request.form['songname']
+    # Fetch song name, artist name, and album via API call
+    songInfo = search(song)
+    return jsonify(songInfo)
+
+
+@app.route("/recommend", methods=['POST'])
+def recommend():
 
     song = request.form['songname']
     # Fetch song features via API call
+    songFeatures = features_call(song)
 
     # Load trained model
+    load = []
 
     # Use song features to make a model.predict
     # What kind of database setup is required?
+    predict = model.predict()
 
     # Make second api call to retrieve name/album/artist from predicted songs
+    recommendations = recommendation(predict)
 
     # data = list of top 5 songs
 
     # """Return all features"""
 
-    results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy,
-                               Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
+    # results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy,
+    #                            Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
 
-    song_id = [result[0] for result in results]
-    popularity = [result[1] for result in results]
-    danceability = [result[2] for result in results]
-    energy = [result[3] for result in results]
-    loudness = [result[4] for result in results]
-    speechiness = [result[5] for result in results]
-    duration_ms = [result[6] for result in results]
-    tempo = [result[7] for result in results]
+    # song_id = [result[0] for result in results]
+    # popularity = [result[1] for result in results]
+    # danceability = [result[2] for result in results]
+    # energy = [result[3] for result in results]
+    # loudness = [result[4] for result in results]
+    # speechiness = [result[5] for result in results]
+    # duration_ms = [result[6] for result in results]
+    # tempo = [result[7] for result in results]
 
     # # Format the data to send as json
     # data = [{
@@ -86,7 +99,7 @@ def predict():
     #     "tempo": tempo
     # }]
     # check return for html ID
-    return jsonify(data)
+    return jsonify({})
 
 
 if __name__ == "__main__":
