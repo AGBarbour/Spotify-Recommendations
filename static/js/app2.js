@@ -18,11 +18,11 @@ function displayData(data) {
 
 // displayData(suggestData);
 
-// var button = d3.select("filter-btn");
+var button = d3.select("#filter-btn");
 var inputSong = d3.select("#songname");
 
 // function to call flask api and update the second table with recommendations
-function displayDB(dbData) {
+function displayDB() {
   tbody2.text("");
   var recommendedData = d3.json(`/recommend`);
   recommendedData.forEach(function (view) {
@@ -42,10 +42,11 @@ function updateRecs() {
   console.log(inputSong.property("value"));
   newSongs = suggestData.filter(song => song.songname === inputSong.property("value"));
   displayData(newSongs);
+  displayDB();
 }
 
 // listener to update table one when the user types a song
-inputSong.on("change", updateRecs);
+// inputSong.on("change", updateRecs);
 
 // listener to update table two when the user clicks the button to recommend songs
-button.on("click", displayDB);
+button.on("click", updateRecs);
