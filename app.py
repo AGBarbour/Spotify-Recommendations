@@ -38,28 +38,6 @@ class Features(db.Model):
         return '<Features %r>' % (self.name)
 
 
-# TODO
-# I think this can be deleted
-# class Map(db.Model):
-#     __tablename__ = 'map'
-
-#     country_code = db.Column(db.String(64), primary_key=True)
-#     market_count = db.Column(db.Float)
-
-#     def __repr__(self):
-#         return '<Map %r>' % (self.name)
-
-
-# class Genre(db.Model):
-#     __tablename__ = 'genre'
-
-#     genre = db.Column(db.String(64), primary_key=True)
-#     count = db.Column(db.Float)
-
-#     def __repr__(self):
-#         return '<Genre %r>' % (self.name)
-
-
 @app.route("/")
 def index():
     """Return the homepage."""
