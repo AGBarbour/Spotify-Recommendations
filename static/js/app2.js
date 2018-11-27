@@ -19,7 +19,7 @@ function displayData(data){
 
 displayData(suggestData)
 
-// var button = d3.select("filter-btn");
+var button = d3.select("#filter-btn");
 var inputSong = d3.select("#songname");
 
 
@@ -35,11 +35,11 @@ var inputSong = d3.select("#songname");
 // displayDB(recommendedData)
 
 function updateRecs() {
-  d3.event.preventDefault();
+  // d3.event.preventDefault();
   console.log(inputSong.property("value"));
   newSongs = suggestData.filter(song => song.songname===inputSong.property("value"))
   displayData(newSongs)
 }
-inputSong.on("change",updateRecs);
+// inputSong.on("change",updateRecs);
 
-button.on("click", displayData);
+button.on("click", updateRecs);
