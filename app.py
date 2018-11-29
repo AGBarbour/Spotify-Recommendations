@@ -50,6 +50,7 @@ def index():
 def searchRoute(song):
     print(song)
     # Fetch song name, artist name, and album via API call
+    # songInfo = search(song)
     songInfo = search(song)
     return jsonify(songInfo)
 
@@ -103,4 +104,4 @@ def recommend():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

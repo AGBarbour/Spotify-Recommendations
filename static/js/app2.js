@@ -39,12 +39,15 @@ var inputSong = d3.select("#songname");
 function updateRecs() {
   d3.event.preventDefault();
   searchSong = inputSong.property("value");
-  d3.json(`/search/${searchSong}`, function (suggestData) {
+  console.log(searchSong);
+  d3.json(`/search/${searchSong}`, function (songInfo) {
+    console.log("check");
     console.log(searchSong);
-    console.log(suggestData);
-    newSongs = suggestData.filter(song => song.song === inputSong.property("value"));
-    displayData(newSongs);
+    console.log(songInfo);
+    newSongs = songInfo.filter(song => song.song === inputSong.property("value"));
+    displayData(songInfo[0]);
   });
+  console.log("check2");
   // displayDB();
 }
 

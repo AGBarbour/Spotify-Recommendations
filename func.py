@@ -8,14 +8,14 @@ def search(query):
 
     search = []
 
-    access_token = "BQAWd1ydMY2NUAMAOK2CNI_9wLaDACVYXuzhdcqi3I-feCB632aQRrLck64Z4tAq5iF2s8eiO427CU4L0OaQrzNrnaDUyKGcznh2xwfR9QnaFOL_oZofMCeBS6kqXKMB_etQqZA_zaUCKauUbmgWx4m8l5C9NyGZKFGK"
+    access_token = "BQC4VH7_bnxMPNhjQIva5ARXwHYCaYXpNM-rBnke1XHExQbKmXC049Y7KpVraOyOcoa49WbGttRdo6t7BqZQRPRZRD_X6VJw0774lJSZSC7ZSjeSyviWqZcWYSuTDUIqC1C1aNma5AWfmq7YVbRfJJVDPzZnJvTas5Yv"
 
     #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
     endpoint = f"https://api.spotify.com/v1/search?q={query}&type=track"
     headers = {"Authorization": f"Bearer {access_token}"}
 
     response = requests.get(endpoint, headers=headers).json()
-    print(response)
+    # print(response)
 
     song = response["tracks"]["items"][0]["name"]
     artist = response["tracks"]["items"][0]["artists"][0]["name"]
@@ -28,7 +28,7 @@ def search(query):
         "album": album,
         "song_id": song_id
     })
-
+    print(search)
     return search
 
 # function to grab song data for recomended songs (MUST PASS LIST THROUGH FUNCTION EVEN IF THE LIST IS 1 ITEM LONG)
@@ -94,6 +94,3 @@ def features_call(song_id):
     })
 
     return features
-
-
-search("get it")
