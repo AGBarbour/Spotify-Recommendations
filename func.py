@@ -68,8 +68,6 @@ def features_call(song_id):
 #     Call Spotify API to collect Audio features data
     endpoint = f"https://api.spotify.com/v1/audio-features/{song_id}"
     headers = {"Authorization":f"Bearer {access_token}"}
-    request_data = {"refresh_token": refresh_token}
-
     response = requests.get(endpoint,headers=headers).json()
 
 #     Append each feature
