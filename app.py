@@ -46,9 +46,9 @@ def index():
     return render_template("recommend.html")
 
 
-@app.route("/search", methods=['POST'])
-def searchRoute():
-    song = request.form['songname']
+@app.route("/search/<song>")
+def searchRoute(song):
+    print(song)
     # Fetch song name, artist name, and album via API call
     songInfo = search(song)
     return jsonify(songInfo)

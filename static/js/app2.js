@@ -22,31 +22,35 @@ var button = d3.select("#filter-btn");
 var inputSong = d3.select("#songname");
 
 // function to call flask api and update the second table with recommendations
-function displayDB() {
-  tbody2.text("");
-  var recommendedData = d3.json(`/recommend`);
-  recommendedData.forEach(function (view) {
-    row = tbody2.append("tr");
-    Object.entries(view).forEach(function ([key, value]) {
-      cell = row.append("td").text(value);
-    });
-  });
-}
+// function displayDB() {
+//   tbody2.text("");
+//   var recommendedData = d3.json(`/recommend`);
+//   recommendedData.forEach(function (view) {
+//     row = tbody2.append("tr");
+//     Object.entries(view).forEach(function ([key, value]) {
+//       cell = row.append("td").text(value);
+//     });
+//   });
+// }
 
 // displayDB(recommendedData);
 
 // function to update the first table with the users search result
 function updateRecs() {
   d3.event.preventDefault();
-  var suggestData = d3.json(`/search`);
-  console.log(inputSong.property("value"));
-  newSongs = suggestData.filter(song => song.songname === inputSong.property("value"));
-  displayData(newSongs);
-  displayDB();
+  searchSong = inputSong.property("value");
+  d3.json(`/search/${searchSong}`, function (suggestData) {
+    console.log(searchSong);
+    console.log(suggestData);
+    newSongs = suggestData.filter(song => song.song === inputSong.property("value"));
+    displayData(newSongs);
+  });
+  // displayDB();
 }
 
-// listener to update table one when the user types a song
-// inputSong.on("change", updateRecs);
 
-// listener to update table two when the user clicks the button to recommend songs
+//  listener to update table one when the user types a song
+// inputSong.on("change",  updateRecs);
+        
+// listener to update table two w hen the user clicks the button  to recommend songs
 button.on("click", updateRecs);
