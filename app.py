@@ -64,8 +64,22 @@ def index():
     # return "hi"
 
 
+<<<<<<< HEAD
 @app.route("/predict")
 def predict(song):
+=======
+@app.route("/search/<song>")
+def searchRoute(song):
+    print(song)
+    # Fetch song name, artist name, and album via API call
+    # songInfo = search(song)
+    songInfo = search(song)
+    return jsonify(songInfo)
+
+
+@app.route("/recommend", methods=['POST'])
+def recommend():
+>>>>>>> origin/Evan
 
     # Fetch song features via API call
 
@@ -108,4 +122,4 @@ def predict(song):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
