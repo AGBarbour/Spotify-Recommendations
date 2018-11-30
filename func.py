@@ -2,18 +2,20 @@ import requests
 import json
 
 # function to grab data for user search input
+
+
 def search(query):
 
     search = []
 
-    access_token = "BQDcp24TrdEgmpC2FBHnT2RWlFbtT1980vpiysBeORLh_dXL7gBDSQPPXeBuihkfQbhCqCydhwnlqcZqjW8MLFFwo9MgUpstiu4SxqSBOc5uY9zDJZUKb21eB-GyEaRiulDLDdPAeq_YSlYUub5KCWke8YZZt7lLRg0i"
+    access_token = "BQC4VH7_bnxMPNhjQIva5ARXwHYCaYXpNM-rBnke1XHExQbKmXC049Y7KpVraOyOcoa49WbGttRdo6t7BqZQRPRZRD_X6VJw0774lJSZSC7ZSjeSyviWqZcWYSuTDUIqC1C1aNma5AWfmq7YVbRfJJVDPzZnJvTas5Yv"
 
     #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
     endpoint = f"https://api.spotify.com/v1/search?q={query}&type=track"
-    headers = {"Authorization":f"Bearer {access_token}"}
+    headers = {"Authorization": f"Bearer {access_token}"}
 
-    response = requests.get(endpoint,headers=headers).json()
-#     print(response)
+    response = requests.get(endpoint, headers=headers).json()
+    # print(response)
 
     song = response["tracks"]["items"][0]["name"]
     artist = response["tracks"]["items"][0]["artists"][0]["name"]
@@ -26,22 +28,24 @@ def search(query):
         "album": album,
         "song_id": song_id
     })
-
+    print(search)
     return search
 
 # function to grab song data for recomended songs (MUST PASS LIST THROUGH FUNCTION EVEN IF THE LIST IS 1 ITEM LONG)
+
+
 def recommendation(song_ids):
 
     recs = []
 
-    access_token = "BQCfVQU0OGDgHj4cLHGzqOqokOlUE4IC4NK_IADw9dpMpvtQylRIuejjdrtDNmyhCWH2sAPaWx4KWqFU7_BIBruEP7owMyj2rHcl0G_Uwz97HGrCNoN9KcpXZcET65llu7wR76Tzt9Lwr38iLOoD9eepJZetIdUksj-6"
+    access_token = "BQAWd1ydMY2NUAMAOK2CNI_9wLaDACVYXuzhdcqi3I-feCB632aQRrLck64Z4tAq5iF2s8eiO427CU4L0OaQrzNrnaDUyKGcznh2xwfR9QnaFOL_oZofMCeBS6kqXKMB_etQqZA_zaUCKauUbmgWx4m8l5C9NyGZKFGK"
 
     for song_id in song_ids:
-    #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
+        #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
         endpoint = f"https://api.spotify.com/v1/tracks/?ids={song_id}"
-        headers = {"Authorization":f"Bearer {access_token}"}
+        headers = {"Authorization": f"Bearer {access_token}"}
 
-        response = requests.get(endpoint,headers=headers).json()
+        response = requests.get(endpoint, headers=headers).json()
 #         print(response)
 
         song = response["tracks"][0]["name"]
@@ -58,17 +62,20 @@ def recommendation(song_ids):
     return recs
 
 # function to gather features for a sing song
+
+
 def features_call(song_id):
-    
+
     features = []
-    
-    access_token = "BQDcp24TrdEgmpC2FBHnT2RWlFbtT1980vpiysBeORLh_dXL7gBDSQPPXeBuihkfQbhCqCydhwnlqcZqjW8MLFFwo9MgUpstiu4SxqSBOc5uY9zDJZUKb21eB-GyEaRiulDLDdPAeq_YSlYUub5KCWke8YZZt7lLRg0i"
+
+    access_token = "BQAWd1ydMY2NUAMAOK2CNI_9wLaDACVYXuzhdcqi3I-feCB632aQRrLck64Z4tAq5iF2s8eiO427CU4L0OaQrzNrnaDUyKGcznh2xwfR9QnaFOL_oZofMCeBS6kqXKMB_etQqZA_zaUCKauUbmgWx4m8l5C9NyGZKFGK"
 
 
 #     Call Spotify API to collect Audio features data
     endpoint = f"https://api.spotify.com/v1/audio-features/{song_id}"
-    headers = {"Authorization":f"Bearer {access_token}"}
-    response = requests.get(endpoint,headers=headers).json()
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    response = requests.get(endpoint, headers=headers).json()
 
 #     Append each feature
     features.append({
@@ -85,6 +92,5 @@ def features_call(song_id):
         "liveness": response["liveness"],
         "valence": response["valence"]
     })
-    
+
     return features
-        

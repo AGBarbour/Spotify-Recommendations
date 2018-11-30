@@ -1,87 +1,230 @@
-/* #map-container, body, html {
+* {
+  box-sizing: border-box;
+  font-family: Ubuntu, sans-serif;
+}
+
+html,
+body {
   height: 100%;
-}
-
-#map {
-  height: 100%;
-}
-
-#map {
-  height: 600px;
-} */
-
-/* #map,
-body,
-html {
-  height: 100%;
-} */
-
-.map {
-  width: 960px;
-  height: 600px;
-}
-
-.svg-container {
-  background-color: "grey";
-}
-
-.col-lg-12 ul li{
-  padding-bottom: 30px;
-}
-
-/* CSS to make Reveal and leaflet work play nice together */
-.reveal .leaflet-container .leaflet-fade-anim .leaflet-tile, .reveal .leaflet-container .leaflet-fade-anim .leaflet-popup {
-  -webkit-transition: opacity 0.2s linear;
-  -moz-transition: opacity 0.2s linear;
-  -o-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear;
-}
-
-.reveal .leaflet-container {
-  font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
-}
-
-.reveal .leaflet-container img {
+  padding: 0;
   margin: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-  max-height: inherit;
 }
 
-.reveal .leaflet-container .leaflet-popup-tip-container {
-  margin: 0 auto;
+/* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 130px;
+  overflow: auto;
 }
 
-.reveal .leaflet-container .leaflet-popup-content-wrapper {
-  padding: 1px;
-  margin: inherit;
+/* The footer is positioned at the bottom of the page */
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 20px;
+  background: black;
 }
 
-.reveal .leaflet-container .leaflet-popup-content {
-  margin: 13px 19px;
-  line-height: 1.4;
-}
-
-.reveal .leaflet-container .leaflet-popup-content h3 {
-  color: #333;
-}
-
-.reveal .leaflet-container .leaflet-popup-tip {
-  padding: 1px;
-  margin: -10px auto 0;
-}
-
-.reveal .leaflet-container .leaflet-popup-content, .reveal .leaflet-popup-content h2 {
-  color: #333;
-}
-
-.reveal .leaflet-container .leaflet-popup-content pre {
-  font-size: 14px;
-  width: 100%;
-  box-shadow: none;
-}
-
-.leaflet-popup-content {
+/* The code styles the text at the bottom of the footer */
+.footer > .bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
   text-align: center;
+  background: black;
+}
+
+.navbar {
+  padding: 5px;
+  margin: 0;
+  background: black;
+}
+
+/* This CSS styles the ufo icon in the navbar */
+.spt-sign {
+  position: absolute;
+  bottom: 5px;
+  left: 125px;
+  width: 35px;
+}
+
+/* Adding styles to the aside and filter form */
+/* .ufo-form {
+  margin-top: 50px;
+} */
+
+.filters .panel-body {
+  padding: 0;
+}
+
+.filters {
+  margin-top: 10px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  color: #8e979f;
+  outline: none;
+}
+
+#table-area th {
+  text-align: left;
+}
+
+#table-area th:first-child,
+#table-area th:nth-child(2),
+#table-area th:nth-child(6) {
+  min-width: 70px;
+}
+
+.loader {
+  margin-top: 50px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+/* The styles for the parallax */
+.hero {
+  position: relative;
+  height: 550px;
+  padding: 20px;
+  margin: 0;
+  background: white;
+  background-image: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0,.9)), url("../images/biglogo.jpg");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.hero h1 {
+  margin-top: 200px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20rem;
+  animation: title 1.2s forwards linear;
+  color: blue;
+}
+
+.hero h2 {
+  font-size: 5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(0, 228, 228);
+  opacity: 0;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+}
+
+/* input placeholder color changes */
+.form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #8e979f;
+}
+
+.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #8e979f;
+}
+
+.form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #8e979f;
+}
+
+.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #8e979f;
+}
+
+/* media queries which will only be activated at specific screen sizes */
+@media (max-width: 800px) {
+  #table-area td {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  #table-area thead {
+    display: none;
+  }
+
+  #table-area tr td:first-child {
+    font-size: 1.8em;
+    font-weight: bold;
+    background: #1b3146;
+  }
+
+  #table-area tr td:last-child {
+    margin-bottom: 20px;
+  }
+
+  #table-area tr td:last-child::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    content: " ";
+    background: aliceblue;
+  }
+
+  #table-area td {
+    font-size: 1.25em;
+  }
+
+  #table-area tbody td {
+    display: block;
+    text-align: center;
+  }
+
+  #table-area tbody td::before {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    content: attr(data-th);
+  }
+
+  .hero h1 {
+    animation: smaller-title 1.2s forwards linear;
+  }
+}
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 7.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes smaller-title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 5.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
