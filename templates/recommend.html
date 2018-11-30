@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Spotify-ish</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="recommend.html">Spotify-ish
+            <img class="spt-sign" src="../static/images/logo.png">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="hero text-center">
+      <h1>Spotify-ish...</h1>
+      <h2>Let Machine Learning find you some tunes.</h2>
+    </div>
+    <div class="container">
+      <div class="row margin-top-50">
+        <div class="col-md-2">
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Song Search</div>
+              <div class="panel-body">
+                <form method="get" id="searchbutton">
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="song">Enter Song</label>
+                        <input class="form-control" id="songname" type="text" name="songname" placeholder="Push It">
+                      </li>
+                    </ul>
+                  </div>
+                  <button id="filter-btn" class="btn btn-default">Submit Song</button>
+                </form>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="col-md-10">
+          <div id="table-area" class="">
+            <table id="song-table" class="table table-striped">
+              <thead>
+                <tr>Requested Song
+                  <th class="table-head">Song Title</th>
+                  <th class="table-head">Artist</th>
+                  <th class="table-head">Album</th>
+                </tr>
+              </thead>
+              <tbody id="tbody1"></tbody>
+              <br>
+              <br>
+            </table>
+            <table id="result-table" class="table table-striped">
+              <thead>
+                <tr>Top 3 Suggested Songs
+                  <th class="table-head">Song Title</th>
+                  <th class="table-head">Artist</th>
+                  <th class="table-head">Album</th>
+                </tr>
+              </thead>
+              <tbody id="tbody2"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span class="bottom">Spotify-ish: A Project by Aruna, Alex, Austin, Ben, Clint, Evan and Luke</span>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="../static/js/data.js"></script>
+  <script src="../static/js/app2.js"></script>
+</body>
+
+</html>
