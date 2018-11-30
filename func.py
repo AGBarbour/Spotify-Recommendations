@@ -8,7 +8,7 @@ def search(query):
 
     search = []
 
-    access_token = "BQC4VH7_bnxMPNhjQIva5ARXwHYCaYXpNM-rBnke1XHExQbKmXC049Y7KpVraOyOcoa49WbGttRdo6t7BqZQRPRZRD_X6VJw0774lJSZSC7ZSjeSyviWqZcWYSuTDUIqC1C1aNma5AWfmq7YVbRfJJVDPzZnJvTas5Yv"
+    access_token = "BQA35k8GGA_Na41LJPvmvuP9VnTQWE2aK2LeM6MG80enmk3F4X_rLFIzDE3bHUVGdfRsw00Dyx_V6N3QnmyLNGRrZ4eSqSUSaj4h8PdU7rTWx4OWmnOPhKrHwTyoVA6rRfU_3-25JDdBlVk6kNqaAvhE6bF8upuXL-IU"
 
     #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
     endpoint = f"https://api.spotify.com/v1/search?q={query}&type=track"
@@ -68,7 +68,7 @@ def features_call(song_id):
 
     features = []
 
-    access_token = "BQAWd1ydMY2NUAMAOK2CNI_9wLaDACVYXuzhdcqi3I-feCB632aQRrLck64Z4tAq5iF2s8eiO427CU4L0OaQrzNrnaDUyKGcznh2xwfR9QnaFOL_oZofMCeBS6kqXKMB_etQqZA_zaUCKauUbmgWx4m8l5C9NyGZKFGK"
+    access_token = "BQA35k8GGA_Na41LJPvmvuP9VnTQWE2aK2LeM6MG80enmk3F4X_rLFIzDE3bHUVGdfRsw00Dyx_V6N3QnmyLNGRrZ4eSqSUSaj4h8PdU7rTWx4OWmnOPhKrHwTyoVA6rRfU_3-25JDdBlVk6kNqaAvhE6bF8upuXL-IU"
 
 
 #     Call Spotify API to collect Audio features data
@@ -76,6 +76,7 @@ def features_call(song_id):
     headers = {"Authorization": f"Bearer {access_token}"}
 
     response = requests.get(endpoint, headers=headers).json()
+    # print(response)
 
 #     Append each feature
     features.append({
@@ -93,4 +94,8 @@ def features_call(song_id):
         "valence": response["valence"]
     })
 
+    print(features)
     return features
+
+
+features_call('3oEHQmhvFLiE7ZYES0ulzv')
