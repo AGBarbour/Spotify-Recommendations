@@ -58,5 +58,5 @@ function displayKNN() {
       });
     });
   }
-button2.on("click", displayKNN);
+button3.on("click", displayKNN);
 
