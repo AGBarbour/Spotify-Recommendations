@@ -8,7 +8,7 @@ def search(query):
 
     search = []
 
-    access_token = "BQC4VH7_bnxMPNhjQIva5ARXwHYCaYXpNM-rBnke1XHExQbKmXC049Y7KpVraOyOcoa49WbGttRdo6t7BqZQRPRZRD_X6VJw0774lJSZSC7ZSjeSyviWqZcWYSuTDUIqC1C1aNma5AWfmq7YVbRfJJVDPzZnJvTas5Yv"
+    access_token = "BQCWHB14d2xG2NIBp4a9ZjgaTAyGfWluUOEeiSk1jw77SjIqANPfCryYPoRcMVAOy0zksLeCjW9IkKupi8Cv-IhpZ02SzSy6zoMKau9xm1E6kFsLPh7_9-_3yj0V8vP5HJjEl7dz2VQrucw"
 
     #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
     endpoint = f"https://api.spotify.com/v1/search?q={query}&type=track"
@@ -28,7 +28,6 @@ def search(query):
         "album": album,
         "song_id": song_id
     })
-    print(search)
     return search
 
 # function to grab song data for recomended songs (MUST PASS LIST THROUGH FUNCTION EVEN IF THE LIST IS 1 ITEM LONG)
@@ -38,7 +37,7 @@ def recommendation(song_ids):
 
     recs = []
 
-    access_token = "BQAWd1ydMY2NUAMAOK2CNI_9wLaDACVYXuzhdcqi3I-feCB632aQRrLck64Z4tAq5iF2s8eiO427CU4L0OaQrzNrnaDUyKGcznh2xwfR9QnaFOL_oZofMCeBS6kqXKMB_etQqZA_zaUCKauUbmgWx4m8l5C9NyGZKFGK"
+    access_token = "BQCWHB14d2xG2NIBp4a9ZjgaTAyGfWluUOEeiSk1jw77SjIqANPfCryYPoRcMVAOy0zksLeCjW9IkKupi8Cv-IhpZ02SzSy6zoMKau9xm1E6kFsLPh7_9-_3yj0V8vP5HJjEl7dz2VQrucw"
 
     for song_id in song_ids:
         #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
@@ -68,11 +67,12 @@ def features_call(song_id):
 
     features = []
 
-    access_token = "BQAWd1ydMY2NUAMAOK2CNI_9wLaDACVYXuzhdcqi3I-feCB632aQRrLck64Z4tAq5iF2s8eiO427CU4L0OaQrzNrnaDUyKGcznh2xwfR9QnaFOL_oZofMCeBS6kqXKMB_etQqZA_zaUCKauUbmgWx4m8l5C9NyGZKFGK"
+    access_token = "BQCWHB14d2xG2NIBp4a9ZjgaTAyGfWluUOEeiSk1jw77SjIqANPfCryYPoRcMVAOy0zksLeCjW9IkKupi8Cv-IhpZ02SzSy6zoMKau9xm1E6kFsLPh7_9-_3yj0V8vP5HJjEl7dz2VQrucw"
 
 
 #     Call Spotify API to collect Audio features data
     endpoint = f"https://api.spotify.com/v1/audio-features/{song_id}"
+<<<<<<< HEAD
 <<<<<<< HEAD
     headers = {"Authorization":f"Bearer {access_token}"}
     response = requests.get(endpoint,headers=headers).json()
@@ -80,6 +80,12 @@ def features_call(song_id):
     headers = {"Authorization": f"Bearer {access_token}"}
 
     response = requests.get(endpoint, headers=headers).json()
+>>>>>>> origin/Evan
+=======
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    response = requests.get(endpoint, headers=headers).json()
+    # print(response)
 >>>>>>> origin/Evan
 
 #     Append each feature
@@ -98,4 +104,8 @@ def features_call(song_id):
         "valence": response["valence"]
     })
 
+    print(features)
     return features
+
+
+features_call('3oEHQmhvFLiE7ZYES0ulzv')
