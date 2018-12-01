@@ -1,4 +1,5 @@
 import os
+from keras.models import load_model
 
 # import sqlalchemy
 import requests
@@ -46,62 +47,49 @@ def index():
     return render_template("recommend.html")
 
 
-@app.route("/search/<song>")
-def searchRoute(song):
-    print(song)
-    # Fetch song name, artist name, and album via API call
-    # songInfo = search(song)
-    songInfo = search(song)
-    return jsonify(songInfo)
+# @app.route("/search/<song>")
+# def searchRoute(song):
+#     print(song)
+#     # Fetch song name, artist name, and album via API call
+#     # songInfo = search(song)
+#     songInfo = search(song)
+#     return jsonify(songInfo)
 
 
-@app.route("/recommend", methods=['POST'])
-def recommend():
+@app.route("/recommend1")
+def recommend1():
 
-    song = request.form['songname']
-    # Fetch song features via API call
-    songFeatures = features_call(song)
+    song = {'acousticness': 0.7349397590361446,
+            'danceability': 0.4340770791075051,
+            'energy': 0.276,
+            'instrumentalness': 5.33e-06,
+            'key': 0.36363636363636365,
+            'liveness': 0.11735205616850553,
+            'loudness': 0.7669367651731809,
+            'mode': 1.0,
+            'speechiness': 0.03219814241486067,
+            'tempo': 0.39690065779997113,
+            'valence': 0.0382}
 
+    # 'id': '3oEHQmhvFLiE7ZYES0ulzv'
     # Load trained model
-    load = []
-
+    model = load_model('DeepLearning_Training1.h5')
+    print(model)
+    print('---------------------------------------')
     # Use song features to make a model.predict
     # What kind of database setup is required?
-    predict = model.predict()
+    predict = model.predict(song)
+    print(predict)
+    print('---------------------------------------')
 
     # Make second api call to retrieve name/album/artist from predicted songs
-    recommendations = recommendation(predict)
+    recommendations = recommendation([predict])
 
     # data = list of top 5 songs
 
-    # """Return all features"""
-
-    # results = db.session.query(Features.id, Features.popularity, Features.danceability, Features.energy,
-    #                            Features.loudness, Features.speechiness, Features.duration_ms, Features.tempo).all()
-
-    # song_id = [result[0] for result in results]
-    # popularity = [result[1] for result in results]
-    # danceability = [result[2] for result in results]
-    # energy = [result[3] for result in results]
-    # loudness = [result[4] for result in results]
-    # speechiness = [result[5] for result in results]
-    # duration_ms = [result[6] for result in results]
-    # tempo = [result[7] for result in results]
-
-    # # Format the data to send as json
-    # data = [{
-    #     "song_id": song_id,
-    #     "popularity": popularity,
-    #     "danceability": danceability,
-    #     "energy": energy,
-    #     "loudness": loudness,
-    #     "speechiness": speechiness,
-    #     "duration_ms": duration_ms,
-    #     "tempo": tempo
-    # }]
-    # check return for html ID
-    return jsonify({})
+    return jsonify(recommendations)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+recommend1()
