@@ -1,10 +1,6 @@
 var data = [{
-  songname: "Push It",
-  artist: "Salt'N'Peppa",
-  album: "Hot, Cool & Vicious"
+  songname: "My Heart Will Go On",
+  artist: "Celine Dion",
+  album: "Let's Talk About Love"
   },
-  {songname: "Round Up",
-  artist: "Sam Spence",
-  album:"Autumn Thunder"
-  }
 ];
