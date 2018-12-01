@@ -22,16 +22,17 @@ var button = d3.select("#filter-btn");
 var inputSong = d3.select("#songname");
 
 // function to call flask api and update the second table with recommendations
-// function displayDB() {
-//   tbody2.text("");
-//   var recommendedData = d3.json(`/recommend`);
-//   recommendedData.forEach(function (view) {
-//     row = tbody2.append("tr");
-//     Object.entries(view).forEach(function ([key, value]) {
-//       cell = row.append("td").text(value);
-//     });
-//   });
-// }
+function displayDB() {
+  console.log("entered displayDB");
+  tbody2.text("");
+  console.log(recommendedData);
+  recommendedData.forEach(function (view) {
+    row = tbody2.append("tr");
+    Object.entries(view).forEach(function ([key, value]) {
+      cell = row.append("td").text(value);
+    });
+  });
+}
 
 // displayDB(recommendedData);
 
@@ -48,7 +49,7 @@ function updateRecs() {
     displayData(songInfo[0]);
   });
   console.log("check2");
-  // displayDB();
+  displayDB();
 }
 
 

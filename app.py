@@ -71,19 +71,19 @@ def recommend1():
             'tempo': 0.39690065779997113,
             'valence': 0.0382}
 
-    # 'id': '3oEHQmhvFLiE7ZYES0ulzv'
-    # Load trained model
-    model = load_model('DeepLearning_Training1.h5')
-    print(model)
-    print('---------------------------------------')
-    # Use song features to make a model.predict
-    # What kind of database setup is required?
-    predict = model.predict(song)
-    print(predict)
-    print('---------------------------------------')
+    # # 'id': '3oEHQmhvFLiE7ZYES0ulzv'
+    # # Load trained model
+    # model = load_model('DeepLearning_Training1.h5')
+    # print(model)
+    # print('---------------------------------------')
+    # # Use song features to make a model.predict
+    # # What kind of database setup is required?
+    # predict = model.predict(song)
+    # print(predict)
+    # print('---------------------------------------')
 
     # Make second api call to retrieve name/album/artist from predicted songs
-    recommendations = recommendation([predict])
+    recommendations = recommendation([song])
 
     # data = list of top 5 songs
 

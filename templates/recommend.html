@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../static/css/style.css">
 
 </head>
+
 <body>
   <div class="wrapper">
     <nav class="navbar navbar-default">
@@ -42,9 +43,10 @@
                     </ul>
                   </div>
                   <button id="filter-btn" class="btn btn-default">Submit Song</button>
-                  <!-- <button id="filter-btnML1" class="btn btn-default">ML Model 1</button>
+                  <button id="filter-btnML1" onclick="location.href='/recommend1'" type="button" class="btn btn-default">ML
+                    Model 1</button>
                   <br>
-                  <button id="filter-btnML2" class="btn btn-default">ML Model 2</button> -->
+                  <button id="filter-btnML2" class="btn btn-default">ML Model 2</button>
                 </form>
               </div>
             </div>
@@ -64,9 +66,11 @@
               <br>
               <br>
             </table>
-            <button class = "button" onclick="document.getElementById('myImage').src='../static/images/blank.png'">Reset</button>
-            <button class = "button" onclick="document.getElementById('myImage').src='../static/images/heyheyhey.png'">Model 1</button>
-            <button class = "button" onclick="document.getElementById('myImage').src='../static/images/cdface.jpg'">Model 2</button>
+            <button class="button" onclick="document.getElementById('myImage').src='../static/images/blank.png'">Reset</button>
+            <button class="button" onclick="document.getElementById('myImage').src='../static/images/heyheyhey.png'">Model
+              1</button>
+            <button class="button" onclick="document.getElementById('myImage').src='../static/images/cdface.jpg'">Model
+              2</button>
             <p></p>
             <table id="result-table" class="table table-striped">
               <thead>
@@ -84,12 +88,13 @@
       </div>
     </div>
     <footer class="footer">
-    <span class="bottom">Spotify-ish: A Project by Aruna, Alex, Austin, Ben, Clint, Evan and Luke</span>
-  </footer>
+      <span class="bottom">Spotify-ish: A Project by Aruna, Alex, Austin, Ben, Clint, Evan and Luke</span>
+    </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="../static/js/data.js"></script>
   <script src="../static/js/app2.js"></script>
   <script src="../static/js/staticsong.js"></script>
 </body>
+
 </html>

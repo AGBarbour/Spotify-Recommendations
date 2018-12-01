@@ -37,7 +37,7 @@ def recommendation(song_ids):
 
     recs = []
 
-    access_token = "BQCWHB14d2xG2NIBp4a9ZjgaTAyGfWluUOEeiSk1jw77SjIqANPfCryYPoRcMVAOy0zksLeCjW9IkKupi8Cv-IhpZ02SzSy6zoMKau9xm1E6kFsLPh7_9-_3yj0V8vP5HJjEl7dz2VQrucw"
+    access_token = "BQBo8RYcnAazXTpRW1Lpti9oNipPYMvejnoMqVMYqJAd_0IK56ANbd4LCMnsE6E_wBBLYX1A8H_0x2GhSHZM30GJbUI8IwQpTpEYoR0mgBlJiTRU24_YBSYuV97HvnU1npOztjVNPxm6mIc"
 
     for song_id in song_ids:
         #   Spotify API search endpoint returns list of tracks matching track title in order of popularity
@@ -45,7 +45,7 @@ def recommendation(song_ids):
         headers = {"Authorization": f"Bearer {access_token}"}
 
         response = requests.get(endpoint, headers=headers).json()
-#         print(response)
+        print(response)
 
         song = response["tracks"][0]["name"]
         artist = response["tracks"][0]["artists"][0]["name"]
@@ -95,6 +95,3 @@ def features_call(song_id):
 
     print(features)
     return features
-
-
-features_call('3oEHQmhvFLiE7ZYES0ulzv')
