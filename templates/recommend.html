@@ -43,10 +43,12 @@
                     </ul>
                   </div>
                   <button id="filter-btn" class="btn btn-default">Submit Song</button>
-                  <button id="filter-btnML1" onclick="location.href='/recommend1'" type="button" class="btn btn-default">ML
-                    Model 1</button>
                   <br>
-                  <button id="filter-btnML2" class="btn btn-default">ML Model 2</button>
+                  <button id="filter-modelSVM" class="btn btn-default">SVM</button>
+                  <br>
+                  <button id="filter-modelKNN" class="btn btn-default">KNN</button>
+                  <br>
+                  <button id="filter-modelDL" class="btn btn-default">Deep Learning</button>
                 </form>
               </div>
             </div>
@@ -66,23 +68,18 @@
               <br>
               <br>
             </table>
-            <button class="button" onclick="document.getElementById('myImage').src='../static/images/blank.png'">Reset</button>
-            <button class="button" onclick="document.getElementById('myImage').src='../static/images/heyheyhey.png'">Model
-              1</button>
-            <button class="button" onclick="document.getElementById('myImage').src='../static/images/cdface.jpg'">Model
-              2</button>
-            <p></p>
             <table id="result-table" class="table table-striped">
               <thead>
-                <tr>Top 3 Suggested Songs
+                <tr>Suggested Songs
                   <th class="table-head">Song Title</th>
                   <th class="table-head">Artist</th>
                   <th class="table-head">Album</th>
                 </tr>
               </thead>
-              <!-- <tbody id="tbody2"></tbody> -->
+              <tbody id="tbody2"></tbody>
+              <br>
+              <br>
             </table>
-            <img id="myImage" src="../static/images/blank.png" width="480" height="320">
           </div>
         </div>
       </div>
@@ -93,7 +90,10 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="../static/js/data.js"></script>
-  <script src="../static/js/app2.js"></script>
+  <script src="../static/js/modelSVM.js"></script>
+  <script src="../static/js/modelKNN.js"></script>
+  <script src="../static/js/modelDL.js"></script>
+  <script src="../static/js/app3.js"></script>
   <script src="../static/js/staticsong.js"></script>
 </body>
 
